@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "name": "Linux",
+      "browse": {
+        "databaseFilename": "/tmp/slurmtmp.31397284/cpp-vscode/cpp-vscode.db"
+      }
+    }
+  ],
+  "version": 4
+}
