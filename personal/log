@@ -1,0 +1,167 @@
+
+	.file	"main.cpp"
+# GNU C++14 (GCC) version 8.4.0 (x86_64-pc-linux-gnu)
+#	compiled by GNU C version 4.8.5 20150623 (Red Hat 4.8.5-44), GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+
+# GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+# options passed:  -D_GNU_SOURCE main.cpp -mtune=generic -march=x86-64
+# -auxbase-strip log -O3 -fverbose-asm
+# options enabled:  -faggressive-loop-optimizations -falign-labels
+# -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg
+# -fcaller-saves -fchkp-check-incomplete-type -fchkp-check-read
+# -fchkp-check-write -fchkp-instrument-calls -fchkp-narrow-bounds
+# -fchkp-optimize -fchkp-store-bounds -fchkp-use-static-bounds
+# -fchkp-use-static-const-bounds -fchkp-use-wrappers -fcode-hoisting
+# -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+# -fcrossjumping -fcse-follow-jumps -fdefer-pop
+# -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively
+# -fdwarf2-cfi-asm -fearly-inlining -feliminate-unused-debug-types
+# -fexceptions -fexpensive-optimizations -fforward-propagate
+# -ffp-int-builtin-inexact -ffunction-cse -fgcse -fgcse-after-reload
+# -fgcse-lm -fgnu-runtime -fgnu-unique -fguess-branch-probability
+# -fhoist-adjacent-loads -fident -fif-conversion -fif-conversion2
+# -findirect-inlining -finline -finline-atomics -finline-functions
+# -finline-functions-called-once -finline-small-functions -fipa-bit-cp
+# -fipa-cp -fipa-cp-clone -fipa-icf -fipa-icf-functions -fipa-icf-variables
+# -fipa-profile -fipa-pure-const -fipa-ra -fipa-reference -fipa-sra
+# -fipa-vrp -fira-hoist-pressure -fira-share-save-slots
+# -fira-share-spill-slots -fisolate-erroneous-paths-dereference -fivopts
+# -fkeep-static-consts -fleading-underscore -flifetime-dse
+# -floop-interchange -floop-unroll-and-jam -flra-remat
+# -flto-odr-type-merging -fmath-errno -fmerge-constants
+# -fmerge-debug-strings -fmove-loop-invariants -fomit-frame-pointer
+# -foptimize-sibling-calls -foptimize-strlen -fpartial-inlining
+# -fpeel-loops -fpeephole -fpeephole2 -fplt -fpredictive-commoning
+# -fprefetch-loop-arrays -free -freg-struct-return -freorder-blocks
+# -freorder-blocks-and-partition -freorder-functions -frerun-cse-after-loop
+# -fsched-critical-path-heuristic -fsched-dep-count-heuristic
+# -fsched-group-heuristic -fsched-interblock -fsched-last-insn-heuristic
+# -fsched-rank-heuristic -fsched-spec -fsched-spec-insn-heuristic
+# -fsched-stalled-insns-dep -fschedule-fusion -fschedule-insns2
+# -fsemantic-interposition -fshow-column -fshrink-wrap
+# -fshrink-wrap-separate -fsigned-zeros -fsplit-ivs-in-unroller
+# -fsplit-loops -fsplit-paths -fsplit-wide-types -fssa-backprop
+# -fssa-phiopt -fstdarg-opt -fstore-merging -fstrict-aliasing
+# -fstrict-volatile-bitfields -fsync-libcalls -fthread-jumps
+# -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
+# -ftree-ccp -ftree-ch -ftree-coalesce-vars -ftree-copy-prop -ftree-cselim
+# -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+# -ftree-loop-distribute-patterns -ftree-loop-distribution
+# -ftree-loop-if-convert -ftree-loop-im -ftree-loop-ivcanon
+# -ftree-loop-optimize -ftree-loop-vectorize -ftree-parallelize-loops=
+# -ftree-partial-pre -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc
+# -ftree-scev-cprop -ftree-sink -ftree-slp-vectorize -ftree-slsr -ftree-sra
+# -ftree-switch-conversion -ftree-tail-merge -ftree-ter -ftree-vrp
+# -funit-at-a-time -funswitch-loops -funwind-tables -fverbose-asm
+# -fzero-initialized-in-bss -m128bit-long-double -m64 -m80387
+# -malign-stringops -mavx256-split-unaligned-load
+# -mavx256-split-unaligned-store -mfancy-math-387 -mfp-ret-in-387 -mfxsr
+# -mglibc -mieee-fp -mlong-double-80 -mmmx -mno-sse4 -mpush-args -mred-zone
+# -msse -msse2 -mstv -mtls-direct-seg-refs -mvzeroupper
+
+	.text
+	.p2align 4,,15
+	.globl	_Z6runLogv
+	.type	_Z6runLogv, @function
+_Z6runLogv:
+.LFB8296:
+	.cfi_startproc
+	pushq	%rbp	#
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+# main.cpp:20:     for(unsigned int i = 0; i <100000000; i++) {
+	xorl	%ebp, %ebp	# i
+# main.cpp:18: long long runLog() {
+	pushq	%rbx	#
+	.cfi_def_cfa_offset 24
+	.cfi_offset 3, -24
+# main.cpp:19:     long long total = 0;
+	xorl	%ebx, %ebx	# <retval>
+# main.cpp:18: long long runLog() {
+	subq	$8, %rsp	#,
+	.cfi_def_cfa_offset 32
+	.p2align 4,,10
+	.p2align 3
+.L2:
+# /apps/gnu/8.4.0-offload-nvptx/include/c++/8.4.0/cmath:351:     { return __builtin_log(__x); }
+	pxor	%xmm0, %xmm0	# tmp94
+	cvtsi2sd	%ebp, %xmm0	# i, tmp94
+# main.cpp:20:     for(unsigned int i = 0; i <100000000; i++) {
+	addl	$1, %ebp	#, i
+# /apps/gnu/8.4.0-offload-nvptx/include/c++/8.4.0/cmath:351:     { return __builtin_log(__x); }
+	call	log	#
+# main.cpp:21:         total +=std::log(i);
+	pxor	%xmm1, %xmm1	# tmp95
+	cvtsi2sdq	%rbx, %xmm1	# <retval>, tmp95
+	addsd	%xmm0, %xmm1	# _11, _2
+	cvttsd2siq	%xmm1, %rbx	# _2, <retval>
+# main.cpp:20:     for(unsigned int i = 0; i <100000000; i++) {
+	cmpl	$100000000, %ebp	#, i
+	jne	.L2	#,
+# main.cpp:24: }
+	addq	$8, %rsp	#,
+	.cfi_def_cfa_offset 24
+	movq	%rbx, %rax	# <retval>,
+	popq	%rbx	#
+	.cfi_def_cfa_offset 16
+	popq	%rbp	#
+	.cfi_def_cfa_offset 8
+	ret	
+	.cfi_endproc
+.LFE8296:
+	.size	_Z6runLogv, .-_Z6runLogv
+	.section	.text.startup,"ax",@progbits
+	.p2align 4,,15
+	.globl	main
+	.type	main, @function
+main:
+.LFB8297:
+	.cfi_startproc
+	subq	$8, %rsp	#,
+	.cfi_def_cfa_offset 16
+# main.cpp:28:     std::cout << runLog() << std::endl;
+	call	_Z6runLogv	#
+# /apps/gnu/8.4.0-offload-nvptx/include/c++/8.4.0/ostream:202:       { return _M_insert(__n); }
+	movl	$_ZSt4cout, %edi	#,
+	movq	%rax, %rsi	# _3,
+	call	_ZNSo9_M_insertIxEERSoT_	#
+# /apps/gnu/8.4.0-offload-nvptx/include/c++/8.4.0/ostream:113: 	return __pf(*this);
+	movq	%rax, %rdi	# _4,
+	call	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_	#
+# main.cpp:30: }
+	xorl	%eax, %eax	#
+	addq	$8, %rsp	#,
+	.cfi_def_cfa_offset 8
+	ret	
+	.cfi_endproc
+.LFE8297:
+	.size	main, .-main
+	.p2align 4,,15
+	.type	_GLOBAL__sub_I__Z6runLogv, @function
+_GLOBAL__sub_I__Z6runLogv:
+.LFB9565:
+	.cfi_startproc
+	subq	$8, %rsp	#,
+	.cfi_def_cfa_offset 16
+# /apps/gnu/8.4.0-offload-nvptx/include/c++/8.4.0/iostream:74:   static ios_base::Init __ioinit;
+	movl	$_ZStL8__ioinit, %edi	#,
+	call	_ZNSt8ios_base4InitC1Ev	#
+	movl	$__dso_handle, %edx	#,
+	movl	$_ZStL8__ioinit, %esi	#,
+	movl	$_ZNSt8ios_base4InitD1Ev, %edi	#,
+# main.cpp:30: }
+	addq	$8, %rsp	#,
+	.cfi_def_cfa_offset 8
+# /apps/gnu/8.4.0-offload-nvptx/include/c++/8.4.0/iostream:74:   static ios_base::Init __ioinit;
+	jmp	__cxa_atexit	#
+	.cfi_endproc
+.LFE9565:
+	.size	_GLOBAL__sub_I__Z6runLogv, .-_GLOBAL__sub_I__Z6runLogv
+	.section	.init_array,"aw"
+	.align 8
+	.quad	_GLOBAL__sub_I__Z6runLogv
+	.local	_ZStL8__ioinit
+	.comm	_ZStL8__ioinit,1,1
+	.hidden	__dso_handle
+	.ident	"GCC: (GNU) 8.4.0"
+	.section	.note.GNU-stack,"",@progbits

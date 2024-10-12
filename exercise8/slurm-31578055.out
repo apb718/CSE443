@@ -1,0 +1,122 @@
+Running 3 experiments for switch at -O3
+Sum = 1073741832
+
+ Performance counter stats for './Exercise8 switch':
+
+          7,113.36 msec task-clock                #    0.997 CPUs utilized          
+                28      context-switches          #    0.004 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+               425      page-faults               #    0.060 K/sec                  
+    24,075,158,053      cycles                    #    3.384 GHz                    
+    45,042,430,939      instructions              #    1.87  insn per cycle         
+     2,445,559,140      branches                  #  343.798 M/sec                  
+           158,892      branch-misses             #    0.01% of all branches        
+
+       7.132836503 seconds time elapsed
+
+       7.112917000 seconds user
+       0.000997000 seconds sys
+
+
+Sum = 1073741832
+
+ Performance counter stats for './Exercise8 switch':
+
+          7,122.30 msec task-clock                #    0.997 CPUs utilized          
+                24      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               425      page-faults               #    0.060 K/sec                  
+    24,073,052,672      cycles                    #    3.380 GHz                    
+    45,042,442,315      instructions              #    1.87  insn per cycle         
+     2,445,575,664      branches                  #  343.369 M/sec                  
+           155,310      branch-misses             #    0.01% of all branches        
+
+       7.141172029 seconds time elapsed
+
+       7.120810000 seconds user
+       0.001995000 seconds sys
+
+
+Sum = 1073741832
+
+ Performance counter stats for './Exercise8 switch':
+
+          7,111.92 msec task-clock                #    0.997 CPUs utilized          
+                26      context-switches          #    0.004 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               425      page-faults               #    0.060 K/sec                  
+    24,070,572,408      cycles                    #    3.385 GHz                    
+    45,042,209,744      instructions              #    1.87  insn per cycle         
+     2,445,532,463      branches                  #  343.864 M/sec                  
+           144,382      branch-misses             #    0.01% of all branches        
+
+       7.131010360 seconds time elapsed
+
+       7.109420000 seconds user
+       0.002992000 seconds sys
+
+
+Running 3 experiments for if -O3
+Sum = 1073741832
+
+ Performance counter stats for './Exercise8 if':
+
+          7,999.39 msec task-clock                #    0.997 CPUs utilized          
+                28      context-switches          #    0.004 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               425      page-faults               #    0.053 K/sec                  
+    26,964,080,020      cycles                    #    3.371 GHz                    
+    82,797,003,216      instructions              #    3.07  insn per cycle         
+    15,446,449,446      branches                  # 1930.953 M/sec                  
+           140,526      branch-misses             #    0.00% of all branches        
+
+       8.021377655 seconds time elapsed
+
+       7.998871000 seconds user
+       0.000997000 seconds sys
+
+
+Sum = 1073741832
+
+ Performance counter stats for './Exercise8 if':
+
+          8,006.51 msec task-clock                #    0.997 CPUs utilized          
+                28      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               426      page-faults               #    0.053 K/sec                  
+    26,972,136,761      cycles                    #    3.369 GHz                    
+    82,797,111,894      instructions              #    3.07  insn per cycle         
+    15,446,455,266      branches                  # 1929.238 M/sec                  
+           138,718      branch-misses             #    0.00% of all branches        
+
+       8.027676716 seconds time elapsed
+
+       8.004040000 seconds user
+       0.002992000 seconds sys
+
+
+Sum = 1073741832
+
+ Performance counter stats for './Exercise8 if':
+
+          7,954.45 msec task-clock                #    0.997 CPUs utilized          
+                32      context-switches          #    0.004 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               425      page-faults               #    0.053 K/sec                  
+    26,978,912,118      cycles                    #    3.392 GHz                    
+    82,796,998,275      instructions              #    3.07  insn per cycle         
+    15,446,431,084      branches                  # 1941.860 M/sec                  
+           138,361      branch-misses             #    0.00% of all branches        
+
+       7.975564306 seconds time elapsed
+
+       7.951942000 seconds user
+       0.002992000 seconds sys
+
+
+Sum = 1073741832
+[ perf record: Woken up 5 times to write data ]
+[ perf record: Captured and wrote 1.164 MB perf_switch.data (144 samples) ]
+Sum = 1073741832
+[ perf record: Woken up 6 times to write data ]
+[ perf record: Captured and wrote 1.285 MB perf_if.data (159 samples) ]
