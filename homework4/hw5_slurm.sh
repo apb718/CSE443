@@ -19,7 +19,7 @@ g++ -g -Wall -std=c++17 -O3 Matrix.cpp NeuralNet.cpp main.cpp -o homework5
 unzip -q /fs/ess/PMIU0184/cse443/data/mnist_images.zip -d "${TMPDIR}"
 
 # Uncomment the following for profiling 
-# perf record -F 20 --call-graph dwarf ./homework5 "${TMPDIR}/data"
+perf record -F 20 --call-graph dwarf ./homework5 "${TMPDIR}/data"
 
 # Comment out the time lines when profiling.
 # Run the program 5 times to get measure consistent timings
