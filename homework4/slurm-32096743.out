@@ -1,0 +1,55 @@
+Matrix.cpp: In member function ‘Matrix Matrix::transpose() const’:
+Matrix.cpp:85:34: warning: comparison of integer expressions of different signedness: ‘size_t’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+         for (size_t col = 0; col < width(); col += 4) {
+                              ~~~~^~~~~~~~~
+Matrix.cpp:87:25: warning: comparison of integer expressions of different signedness: ‘size_t’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+             if (col + 1 >= width()) break;
+                 ~~~~~~~~^~~~~~~~~~
+Matrix.cpp:89:25: warning: comparison of integer expressions of different signedness: ‘size_t’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+             if (col + 2 >= width()) break;
+                 ~~~~~~~~^~~~~~~~~~
+Matrix.cpp:91:25: warning: comparison of integer expressions of different signedness: ‘size_t’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+             if (col + 3 >= width()) break;
+                 ~~~~~~~~^~~~~~~~~~
+-- Epoch #0 --
+Training with 5000 images...
+Correct classification: 1090 [0.109% ]
+Elapsed time = 3473 milliseconds.
+-- Epoch #1 --
+Training with 5000 images...
+Correct classification: 2043 [0.2043% ]
+Elapsed time = 3344 milliseconds.
+-- Epoch #2 --
+Training with 5000 images...
+Correct classification: 2947 [0.2947% ]
+Elapsed time = 3383 milliseconds.
+-- Epoch #3 --
+Training with 5000 images...
+Correct classification: 3108 [0.3108% ]
+Elapsed time = 3537 milliseconds.
+-- Epoch #4 --
+Training with 5000 images...
+Correct classification: 3164 [0.3164% ]
+Elapsed time = 3559 milliseconds.
+-- Epoch #5 --
+Training with 5000 images...
+Correct classification: 3195 [0.3195% ]
+Elapsed time = 3524 milliseconds.
+-- Epoch #6 --
+Training with 5000 images...
+Correct classification: 3217 [0.3217% ]
+Elapsed time = 3445 milliseconds.
+-- Epoch #7 --
+Training with 5000 images...
+Correct classification: 3230 [0.323% ]
+Elapsed time = 3371 milliseconds.
+-- Epoch #8 --
+Training with 5000 images...
+Correct classification: 3236 [0.3236% ]
+Elapsed time = 3378 milliseconds.
+-- Epoch #9 --
+Training with 5000 images...
+Correct classification: 3248 [0.3248% ]
+Elapsed time = 3357 milliseconds.
+[ perf record: Woken up 1 times to write data ]
+[ perf record: Captured and wrote 0.049 MB perf.data (684 samples) ]
