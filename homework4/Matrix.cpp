@@ -51,10 +51,8 @@ Matrix Matrix::dot(const Matrix& rhs) const {
     const auto mWidth = rhs.front().size(), width = front().size();
     Matrix result(size(), mWidth);
     // Do the actual matrix multiplication
-
-    // SWITCHED TO COL MAJOR
-    for (size_t col = 0; (col < mWidth); col++) {
-        for (size_t row = 0; (row < size()); row++) {
+    for (size_t row = 0; (row < size()); row++) {
+        for (size_t col = 0; (col < mWidth); col++) {
             Val sum = 0;
             for (size_t i = 0; (i < width); i++) {
                 sum += (*this)[row][i] * rhs[i][col];
