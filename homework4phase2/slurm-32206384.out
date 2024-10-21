@@ -1,7 +1,0 @@
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  Error reading: TrainingSetList.txt
--- Epoch #0 --
-Training with 5000 images...
-[ perf record: Woken up 1 times to write data ]
-[ perf record: Captured and wrote 0.002 MB perf.data (5 samples) ]
-/var/spool/slurmd/job32206384/slurm_script: line 22: 41666 Aborted                 (core dumped) perf record -F 20 --call-graph fp ./homework5 "${TMPDIR}/data"

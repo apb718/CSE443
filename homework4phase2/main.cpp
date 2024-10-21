@@ -14,6 +14,7 @@
 #include <iomanip>
 #include <iostream>
 #include <chrono>
+#include <algorithm>
 #include "NeuralNet.h"
 
 /**
