@@ -1,0 +1,95 @@
+Number with most number of prime factors: 1012484, prime factor count = 4
+
+ Performance counter stats for './exercise14 10000':
+
+         39,989.87 msec task-clock                #    1.998 CPUs utilized          
+               119      context-switches          #    0.003 K/sec                  
+                 5      cpu-migrations            #    0.000 K/sec                  
+               574      page-faults               #    0.014 K/sec                  
+   138,788,144,135      cycles                    #    3.471 GHz                    
+    40,772,939,795      instructions              #    0.29  insn per cycle         
+    10,178,959,998      branches                  #  254.538 M/sec                  
+           678,022      branch-misses             #    0.01% of all branches        
+
+      20.011827975 seconds time elapsed
+
+      39.983921000 seconds user
+       0.006983000 seconds sys
+
+
+Number with most number of prime factors: 1012484, prime factor count = 4
+
+ Performance counter stats for './exercise14 10000':
+
+         39,827.20 msec task-clock                #    2.000 CPUs utilized          
+               126      context-switches          #    0.003 K/sec                  
+                 3      cpu-migrations            #    0.000 K/sec                  
+               573      page-faults               #    0.014 K/sec                  
+   138,741,456,790      cycles                    #    3.484 GHz                    
+    40,764,335,276      instructions              #    0.29  insn per cycle         
+    10,177,732,766      branches                  #  255.547 M/sec                  
+           770,339      branch-misses             #    0.01% of all branches        
+
+      19.917894197 seconds time elapsed
+
+      39.825504000 seconds user
+       0.002992000 seconds sys
+
+
+Number with most number of prime factors: 1012484, prime factor count = 4
+
+ Performance counter stats for './exercise14 10000':
+
+         39,866.39 msec task-clock                #    1.998 CPUs utilized          
+               119      context-switches          #    0.003 K/sec                  
+                 4      cpu-migrations            #    0.000 K/sec                  
+               574      page-faults               #    0.014 K/sec                  
+   138,799,617,255      cycles                    #    3.482 GHz                    
+    40,773,681,102      instructions              #    0.29  insn per cycle         
+    10,179,069,453      branches                  #  255.330 M/sec                  
+           636,485      branch-misses             #    0.01% of all branches        
+
+      19.953706959 seconds time elapsed
+
+      39.861501000 seconds user
+       0.006983000 seconds sys
+
+
+Number with most number of prime factors: 1012484, prime factor count = 4
+
+ Performance counter stats for './exercise14 10000':
+
+         39,886.71 msec task-clock                #    1.997 CPUs utilized          
+               124      context-switches          #    0.003 K/sec                  
+                 3      cpu-migrations            #    0.000 K/sec                  
+               579      page-faults               #    0.015 K/sec                  
+   138,739,747,396      cycles                    #    3.478 GHz                    
+    40,764,926,511      instructions              #    0.29  insn per cycle         
+    10,177,832,311      branches                  #  255.168 M/sec                  
+           716,640      branch-misses             #    0.01% of all branches        
+
+      19.973600550 seconds time elapsed
+
+      39.881402000 seconds user
+       0.006983000 seconds sys
+
+
+Number with most number of prime factors: 1012484, prime factor count = 4
+
+ Performance counter stats for './exercise14 10000':
+
+         39,890.88 msec task-clock                #    1.997 CPUs utilized          
+               121      context-switches          #    0.003 K/sec                  
+                 6      cpu-migrations            #    0.000 K/sec                  
+               575      page-faults               #    0.014 K/sec                  
+   138,721,045,682      cycles                    #    3.478 GHz                    
+    40,762,803,910      instructions              #    0.29  insn per cycle         
+    10,177,487,551      branches                  #  255.133 M/sec                  
+           721,343      branch-misses             #    0.01% of all branches        
+
+      19.976633779 seconds time elapsed
+
+      39.884582000 seconds user
+       0.007980000 seconds sys
+
+

@@ -10,8 +10,14 @@
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=4
 
+lscpu
+
+echo " "
+
+hostnamectl
+
 # You may uncomment the following line to compile the program
-g++ -g -Wall -std=c++17 -O3 Matrix.cpp NeuralNet.cpp main.cpp -o homework5
+g++ -g -Wall -std=c++17 -O3 Matrix.cpp NeuralNet.cpp main.cpp -o homework5 -pthread
 
 # Setup the mnist image files for testing and training on local
 # temporary storage to reduce I/O times.  If it is not on local

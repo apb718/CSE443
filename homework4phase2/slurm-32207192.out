@@ -1,8 +1,0 @@
-main.cpp: In function ‘void train(NeuralNet&, const string&, int, const string&)’:
-main.cpp:138:5: error: ‘shuffle’ is not a member of ‘std’
-     std::shuffle(fileNames.begin(), fileNames.end(),
-     ^~~
-main.cpp: In function ‘int maxElemIndex(const std::vector<double>&)’:
-main.cpp:154:12: error: ‘max_element’ is not a member of ‘std’
-     return std::max_element(vec.begin(), vec.end()) - vec.begin();
-            ^~~

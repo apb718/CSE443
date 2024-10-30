@@ -17,6 +17,8 @@
 #include <random>
 #include <cmath>
 #include <algorithm>
+#include <thread>
+#include <mutex>
 
 #include "NeuralNet.h"
 

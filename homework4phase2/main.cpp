@@ -14,6 +14,7 @@
 #include <iomanip>
 #include <iostream>
 #include <chrono>
+#include <thread>
 #include <algorithm>
 #include "NeuralNet.h"
 
@@ -156,6 +157,44 @@ int maxElemIndex(const std::vector<Val>& vec) {
 }
 
 
+
+/**
+ * Helper method to process the images in chunks given from the assess
+ * method
+ *
+ * \param[in] net the neural network
+ * 
+ * \param[in] imageList the list that contanis the image 
+ * 
+ * \param[in] path path to the file
+ * 
+ * \param[in] localPassCount the count within this method that will be added
+ * with the other lists processed through this
+ *
+ * \param[in] localTotCount the local count for this list of the total items gone over
+ * 
+ * \return void
+*/
+void processImages(NeuralNet& net, const std::vector<std::string>& imageList, 
+        const std::string& path, int& localPassCount, int& localTotCount) {
+    for (const auto& imgName : imageList) {
+        const Matrix img = loadPGM(path + "/" + imgName);
+        const Matrix exp = getExpectedDigitOutput(imgName);
+        const Matrix res = net.classify(img);
+
+        assert(res.width() == 1);
+        assert(res.height() == 10);
+
+        const int expIdx = maxElemIndex(exp.transpose()[0]);
+        const int resIdx = maxElemIndex(res.transpose()[0]);
+
+        if (expIdx == resIdx) {
+            localPassCount++;
+        }
+        localTotCount++;
+    }
+}
+
 /**
  * Helper method to determine how well a given neural network has
  * trained used a list of test images.
@@ -170,35 +209,41 @@ int maxElemIndex(const std::vector<Val>& vec) {
  * supplied \c net.
  */
 void assess(NeuralNet& net, const std::string& path,
-            const std::string& imgFileList = "TestingSetList.txt") {
+    const std::string& imgFileList = "TestingSetList.txt") {
     std::ifstream fileList2(imgFileList);
     if (!fileList2) {
-        throw std::runtime_error("Error reading " + imgFileList);
-    }
-    // Check how many of the images are correctly classified by the
-    // given given neural network.
-    auto passCount = 0, totCount = 0;;
-    for (std::string imgName; std::getline(fileList2, imgName); totCount++) {
-        const Matrix img = loadPGM(path + "/" + imgName);
-        const Matrix exp = getExpectedDigitOutput(imgName);
-        // Have our network classify the image.
-        const Matrix res = net.classify(img);
-        assert(res.width() == 1);
-        assert(res.height() == 10);
-        // Find the maximum index positions in exp results to see if
-        // they are the same. If they are it is a good
-        // result. Otherwise, it is an error.
-        const int expIdx = maxElemIndex(exp.transpose()[0]);
-        const int resIdx = maxElemIndex(res.transpose()[0]);
-        if (expIdx == resIdx) {
-            passCount++;
-        }
-        // std::cout << imgName.substr(imgName.rfind('/'))
-        //           << '\t' << expIdx << '\t' << resIdx << '\n';
-    }
-    std::cout << "Correct classification: " << passCount << " ["
-              << (passCount * 1.f / totCount) << "% ]\n";
-}
+        throw std::runtime_error("Error reading " + imgFileList);}
+    std::vector<std::string> imageNames;
+    std::string imgName;
+    // Read all image file names into a vector
+    while (std::getline(fileList2, imgName)) {
+        imageNames.push_back(imgName); }
+    // Defines the thread count
+    const int numThreads = 4; std::vector<std::thread> threads;
+    // vectors that have (numThreads) elements to be passed 
+    // into each threads method call
+    std::vector<int> passCounts(numThreads, 0), totalCounts(numThreads, 0);
+    // std::vector<int> totalCounts(numThreads, 0);
+    // Divide the work among threads
+    size_t chunkSize = imageNames.size() / numThreads;
+    for (int i = 0; i < numThreads; ++i) {
+        // Determine the start and end indices for each thread
+        size_t startIdx = i * chunkSize;
+        size_t endIdx = (i == numThreads - 1) ? 
+                        imageNames.size() : (i + 1) * chunkSize;
+        // Create threads, each processing its chunk of images
+        threads.emplace_back(processImages, std::ref(net), 
+            std::vector<std::string>(imageNames.begin() + startIdx,
+                imageNames.begin() + endIdx), path, std::ref(passCounts[i]), 
+                std::ref(totalCounts[i]));}
+    // Wait for all threads to finish
+    for (auto& t : threads) { t.join(); }
+    // Combine the results from all threads
+    int totalPassCount = 0, totalTotCount = 0;
+    for (int i = 0; i < numThreads; ++i) {
+        totalPassCount += passCounts[i]; totalTotCount += totalCounts[i];}
+    std::cout << "Correct classification: " << totalPassCount << " ["
+              << (totalPassCount * 1.f / totalTotCount) * 100 << "% ]\n"; }
 
 /**
  * The main method that trains and assess a neural network using a
