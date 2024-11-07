@@ -179,10 +179,10 @@ bool addToFoundVectors(const PNG& mask, const int row, const int col) {
 bool checkNetMatch(double netMatch, const PNG& mask, int matchPercent, 
                    int startRow, int startCol) {
     if (netMatch > mask.getWidth() * mask.getHeight() * matchPercent / 100.0) {
-        if (!addToFoundVectors(mask, startRow, startCol)) {
-            return false;
-        }
-        countOfMatches++;
+        // if (!addToFoundVectors(mask, startRow, startCol)) {
+        //     return false;
+        // }
+        // countOfMatches++;
         return true;
     }
     return false;
@@ -214,39 +214,68 @@ bool checkPixels(const PNG& img1, const PNG& mask, const Pixel& avgBackground,
     return checkNetMatch(matchCount - mismatchCount, mask, 
         matchPercent, startRow, startCol);
 }
-// Initial method to start searching the image.
+
 void imageSearch(const std::string& mainImageFile,
-                const std::string& srchImageFile, 
-                const std::string& outImageFile, const bool isMask = true, 
-                const int matchPercent = 75, const int tolerance = 32) {
-    // Implement this method using various methods or even better
-    // use an object-oriented approach.
+                 const std::string& srchImageFile,
+                 const std::string& outImageFile, const bool isMask = true,
+                 const int matchPercent = 75, const int tolerance = 32) {
+    // Load images
     PNG img1, mask, out;
     img1.load(mainImageFile);
-    mask.load(srchImageFile); out = img1;
+    mask.load(srchImageFile);
+    out = img1;
+
     int maskWidth = mask.getWidth(), maskHeight = mask.getHeight();
     int imgWidth = img1.getWidth(), imgHeight = img1.getHeight();
-    for (int i = 0; i <= imgHeight - maskHeight; i++) {
-        for (int j = 0; j <= imgWidth - maskWidth; j++) {
-            Pixel backgroundColor = computeBackgroundPixel(img1, mask,
-                                            i, j, maskHeight, maskWidth);
-            checkPixels(img1, mask, backgroundColor,
-                    i, j, maskHeight, maskWidth, matchPercent, tolerance);
+
+    // Number of threads
+    int numThreads = 0;
+
+    // Prepare a vector to hold results for each thread
+    std::vector<std::vector<std::pair<int, int>>> threadResults;
+
+#pragma omp parallel
+    {
+        // Initialize thread-local storage
+#pragma omp single
+        {
+            numThreads = omp_get_num_threads();
+            threadResults.resize(numThreads);
+        }
+
+        int threadNum = omp_get_thread_num();
+
+#pragma omp for schedule(static)
+        for (int i = 0; i <= imgHeight - maskHeight; i++) {
+            for (int j = 0; j <= imgWidth - maskWidth; j++) {
+                // Compute background pixel
+                Pixel backgroundColor = computeBackgroundPixel(img1, mask, i, j, maskHeight, maskWidth);
+
+                // Check for matches
+                if (checkPixels(img1, mask, backgroundColor, i, j, maskHeight, maskWidth, matchPercent, tolerance)) {
+                    // Store result in thread-local storage
+                    threadResults[threadNum].emplace_back(i, j);
+                }
+            }
         }
     }
-    for (std::pair<int, int> item : found) {
-        std::cout << "sub-image matched at: " 
-        << item.first << ", " << item.second 
-        << ", " << item.first+ mask.getHeight()
-        << ", " << item.second + mask.getWidth() << std::endl;
-        drawBox(out, item.first, item.second, maskHeight, maskHeight);
+
+   // Merge results sequentially
+    for (const auto& threadVec : threadResults) {
+        for (const auto& item : threadVec) {
+            if (addToFoundVectors(mask, item.first, item.second)) {
+                std::cout << "sub-image matched at: "
+                          << item.first << ", " << item.second << ", "
+                          << item.first + mask.getHeight() << ", "
+                          << item.second + mask.getWidth() << std::endl;
+                drawBox(out, item.first, item.second, maskHeight, maskWidth);
+            }
+        }
     }
-    // std::cout << "Before write" << std::endl;
+
+    // Write the output image
     out.write(outImageFile);
-    // std::cout << "After write" << std::endl;
 }
-
-
 
 /**
  * The main method simply checks for command-line arguments and then calls

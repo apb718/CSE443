@@ -33,11 +33,13 @@ void compute(const long num, CountMap& tracker) {
             if (isPrime(num)) {
                 // Track this number as it is a prime number 
                 // and the number of times we have seen it.
+#pragma omp critical
                     tracker[num]++;
             }
         }
         #pragma omp section
         {
+#pragma omp critical
             if (isAngular(num) && (num % 10 == 1)) {
                     tracker[num]++;
             }

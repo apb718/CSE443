@@ -1,1 +1,9 @@
 homework4phase2/*.out
+homework6/core*
+homework6/*.png
+homework6/search.txt
+homework6/.vscode
+homework6/*.out
+homework6/*.data.old
+homework6/*.data
+homework6/ImageChecker
