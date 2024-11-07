@@ -1,3 +1,4 @@
+// Copyright Alec Byrd 2024
 #include "ImageProcessor.h"
 
 Pixel ImageProcessor::computeBackgroundPixel(const PNG& img1, const PNG& mask,

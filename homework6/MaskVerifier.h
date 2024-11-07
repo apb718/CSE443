@@ -1,3 +1,4 @@
+// Copyright Alec Byrd 2024
 #ifndef MASKVERIFIER_H
 #define MASKVERIFIER_H
 

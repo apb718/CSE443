@@ -1,3 +1,4 @@
+// Copyright Alec Byrd 2024
 #include "ImageSearch.h"
 #include <iostream>
 

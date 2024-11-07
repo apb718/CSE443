@@ -1,3 +1,4 @@
+// Copyright Alec Byrd 2024
 #ifndef IMAGESEARCH_H
 #define IMAGESEARCH_H
 

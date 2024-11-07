@@ -1,7 +1,13 @@
+// Copyright Alec Byrd 2024
 #include "ImageSearch.h"
+#include <utility>
+#include <omp.h>
+#include <string>
 
-void ImageSearch::search(const std::string& mainImageFile, const std::string& srchImageFile,
-                         const std::string& outImageFile, bool isMask,
+void ImageSearch::search(const std::string& mainImageFile,
+                         const std::string& srchImageFile,
+                         const std::string& outImageFile,
+                         bool isMask,
                          int matchPercent, int tolerance) {
     PNG img1, mask, out;
     img1.load(mainImageFile);
@@ -25,8 +31,11 @@ void ImageSearch::search(const std::string& mainImageFile, const std::string& sr
 #pragma omp for schedule(static)
         for (int i = 0; i <= imgHeight - maskHeight; i++) {
             for (int j = 0; j <= imgWidth - maskWidth; j++) {
-                Pixel avgBackground = imageProcessor.computeBackgroundPixel(img1, mask, i, j, maskHeight, maskWidth);
-                if (maskVerifier.verifySameShade(img1.getPixel(i, j), mask.getPixel(0, 0), avgBackground, tolerance)) {
+                Pixel avgBackground = 
+                    imageProcessor.computeBackgroundPixel(img1,
+                            mask, i, j, maskHeight, maskWidth);
+                if (maskVerifier.verifySameShade(img1.getPixel(i, j),
+                        mask.getPixel(0, 0), avgBackground, tolerance)) {
                     threadResults[threadNum].emplace_back(i, j);
                 }
             }
@@ -37,7 +46,8 @@ void ImageSearch::search(const std::string& mainImageFile, const std::string& sr
     for (const auto& threadVec : threadResults) {
         for (const auto& coord : threadVec) {
             if (true /* Add bounding box logic */) {
-                imageProcessor.drawBox(out, coord.first, coord.second, maskWidth, maskHeight);
+                imageProcessor.drawBox(out, coord.first,
+                    coord.second, maskWidth, maskHeight);
             }
         }
     }

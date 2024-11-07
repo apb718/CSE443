@@ -1,3 +1,4 @@
+// Copyright Alec Byrd 2024
 #ifndef IMAGEPROCESSOR_H
 #define IMAGEPROCESSOR_H
 
